@@ -1,10 +1,9 @@
 // import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({super.key});
+  // const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +13,9 @@ class MyDrawer extends StatelessWidget {
       child: Container(
         color: Colors.deepPurple,
         child: ListView(
+          // ignore: prefer_const_literals_to_create_immutables
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               padding: EdgeInsets.zero,
               margin: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
@@ -29,7 +29,7 @@ class MyDrawer extends StatelessWidget {
                 )
               ),
 
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   CupertinoIcons.home,
                   color: Colors.white,
@@ -42,7 +42,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   CupertinoIcons.profile_circled,
                   color: Colors.white,
@@ -55,7 +55,7 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
               ),
-              ListTile(
+              const ListTile(
                 leading: Icon(
                   CupertinoIcons.mail,
                   color: Colors.white,
