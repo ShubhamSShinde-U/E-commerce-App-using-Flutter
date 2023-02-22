@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -17,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
        setState(() {
       changeButton =  true;
     });
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     await Navigator.pushNamed(context, MyRoutes.homeRoute);
     setState(() {
       changeButton =  false;
@@ -44,12 +46,12 @@ class _LoginPageState extends State<LoginPage> {
             fit:BoxFit.cover,
             // height: 600,
             ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
             child: Text("Hello All !!!"),
           ),
           Text("Welcome $name" , 
-              style: TextStyle(
+              style: const TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
               ),
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 TextFormField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                   hintText: "Enter UserName",
                   labelText: "UserName",
                   ),
@@ -77,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
               ), 
             TextFormField(
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Enter Password",
                 labelText: "Password",
               ),
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                     return null;
                   },
             ),
-            SizedBox(
+            const SizedBox(
               height: 50.0,
      
             ),
@@ -114,14 +116,14 @@ class _LoginPageState extends State<LoginPage> {
               child: InkWell( 
                 onTap: () =>moveToHome(context),
                 child: AnimatedContainer(
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 //conditional change 3 param
                 width: changeButton? 50 : 150,
                 height: 60,
                
                 alignment: Alignment.center,
                 //if button is clicked then make it as done
-                  child: changeButton?Icon(Icons.done,color: Colors.white,): Text("Login",
+                  child: changeButton?const Icon(Icons.done,color: Colors.white,): const Text("Login",
                     style: TextStyle(
                       color: Colors.white, 
                       fontWeight:FontWeight.bold,
