@@ -15,7 +15,8 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(    //wrap with the card to show box
-      shape: const StadiumBorder(),
+      // shape: const StadiumBorder(),
+      
       shadowColor: Colors.blue,
       child: ListTile(
         leading: Image.network(item.image),
