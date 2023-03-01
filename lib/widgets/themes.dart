@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class Mytheme {
   // ignore: non_constant_identifier_names
   static ThemeData LightTheme(BuildContext context)=> ThemeData(
     primarySwatch: Colors.deepPurple,
-    // fontFamily: 
+    fontFamily: GoogleFonts.poppins().fontFamily, 
     appBarTheme: AppBarTheme(
       color: Colors.white,
       
@@ -16,4 +16,9 @@ class Mytheme {
     static ThemeData darkTheme(BuildContext context)=> ThemeData(
     brightness: Brightness.dark,
     );
+
+
+    //colors
+    static Color creamColor = const Color(0xfff5f5f5);
+    static Color darkBluishColor = const Color(0xff403b50);
 }
