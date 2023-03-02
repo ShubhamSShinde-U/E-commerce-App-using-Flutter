@@ -49,13 +49,11 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children:  [
               // CatalogList(),
-              CatalogHeader(),
+              const CatalogHeader(),
               if(CatalogModel.items!=null && CatalogModel.items.isNotEmpty)
                 const CatalogList().expand()
               else
-                const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                const CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
@@ -130,7 +128,14 @@ class CatalogItem extends StatelessWidget {
                   alignment: MainAxisAlignment.spaceBetween,
                   children: [
                     "\$${catalog.price}".text.bold.xl.make(),
-                    ElevatedButton(onPressed: (){}, child: "Buy".text.make())
+                    ElevatedButton(
+                      onPressed: (){},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Mytheme.darkBluishColor),
+                        shape: MaterialStateProperty.all(StadiumBorder())
+                      ), 
+                      child: "Buy".text.make()
+                      )
                   ],
                 )
               ],
