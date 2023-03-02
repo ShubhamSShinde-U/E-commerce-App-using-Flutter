@@ -41,18 +41,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context){//context is element which decides location of each widget
     return Scaffold(
+      backgroundColor: Mytheme.creamColor,
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              CatalogList(),
-              //if( CatalogModel.items.isNotEmpty  )
-              // CatalogList()
-              // else Center(
-              //       child: CircularProgressIndicator(),
-              //     )
+            children:  [
+              // CatalogList(),
+              CatalogHeader(),
+              if(CatalogModel.items!=null && CatalogModel.items.isNotEmpty)
+                const CatalogList().expand()
+              else
+                const Center(
+                    child: CircularProgressIndicator(),
+                  )
             ],
           ),
         ),
@@ -109,10 +112,45 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VxBox(
-      child: Row(children: [
-        Image.network(catalog.image)
-      ],)
-    ).orange100.square(200).make();//similar to container
+    return SingleChildScrollView(
+      child: VxBox(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(children: [
+            CatalogImage(image: catalog.image),
+            Expanded(
+              
+              child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                catalog.name.text.bold.xl.color(Mytheme.darkBluishColor).make(),
+                catalog.desc.text.textStyle(context.captionStyle).make(),
+                ButtonBar(
+                  alignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    "\$${catalog.price}".text.bold.xl.make(),
+                    ElevatedButton(onPressed: (){}, child: "Buy".text.make())
+                  ],
+                )
+              ],
+            ))
+          ],),
+        )
+      ).white.rounded.square(150).make().py16(),//padding veritcal only i.e. py
+    );//similar to container
+  }
+}
+
+class CatalogImage extends StatelessWidget {
+  const CatalogImage({
+    Key? key,
+    required this.image,
+  }) : super(key: key);
+
+  final String image;
+  @override
+  Widget build(BuildContext context) {
+    return  Image.network(image).box.rounded.p8.color(Mytheme.creamColor).make().p16().w40(context);
   }
 }
