@@ -27,7 +27,7 @@
 	},
 	{
 		"id":5,
-    	"name":"APPLE 2020 Macbook Air M1",
+    	"name":"2020 Macbook Air M1",
     	"desc": "8 GB/256 GB SSD",
     	"price": 400,
     	"color":"#232323",
@@ -36,7 +36,7 @@
 	,
 	{
 		"id":6,
-    	"name":"Apple AirPods(2nd gen)",
+    	"name":"Apple AirPods",
     	"desc": "With Mic, White & True Wireless",
     	"price": 1999,
     	"color":"#232323",
@@ -44,7 +44,7 @@
 	},
 	{
 		"id":7,
-    	"name":"APPLE Watch SE GPS (2nd Gen)",
+    	"name":"APPLE Watch SE GPS",
     	"desc": "Midnight Strap, 44mm",
     	"price": 32891,
     	"color":"#232323",
@@ -52,7 +52,7 @@
 	},
 	{
 		"id":8,
-    	"name":"APPLE iPad (9th Gen)",
+    	"name":"APPLE iPad",
     	"desc": "64 GB ROM 10.2 inch (Grey)",
     	"price": 400,
     	"color":"#232323",
