@@ -18,21 +18,24 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: Mytheme.creamColor,
-      bottomNavigationBar: ButtonBar(
-                  alignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    "\$${catalog.price}".text.bold.xl3.make(),
-                    ElevatedButton(
-                      onPressed: (){},
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Mytheme.darkBluishColor),
-                        shape: MaterialStateProperty.all(StadiumBorder())
-                      ), 
-                      child: "Add to Cart".text.make()
-                      ).wh(120,50)
-                  ],
-                ),
+      backgroundColor: context.canvasColor,
+      bottomNavigationBar: Container(
+        color: context.cardColor,
+        child: ButtonBar(
+                    alignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      "\$${catalog.price}".text.bold.xl3.make(),
+                      ElevatedButton(
+                        onPressed: (){},
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
+                          shape: MaterialStateProperty.all(StadiumBorder())
+                        ), 
+                        child: "Add to Cart".text.make()
+                        ).wh(120,50)
+                    ],
+                  ),
+      ),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -49,9 +52,9 @@ class HomeDetailPage extends StatelessWidget {
                 edge: VxEdge.TOP,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child:Column(children: [
-                    catalog.name.text.bold.xl4.color(Mytheme.darkBluishColor).make(),
+                    catalog.name.text.bold.xl4.color(context.accentColor).make(),
                     catalog.desc.text.xl.textStyle(context.captionStyle).make(),
                     10.heightBox,
                     "Turpis tristique lectus conubia. Condimentum dapibus. Viverra hendrerit. Mauris vestibulum. Vitae pharetra dis dolor sociis eleifend fames aptent aenean nullam, conubia viverra aptent a ultricies.Conubia inceptos. Sem cum metus condimentum morbi. Consectetuer odio volutpat tortor quis eget Blandit tempus non scelerisque montes. Est mauris rhoncus.Libero sociosqu nunc. Mollis habitasse proin integer auctor odio tempor tempor euismod fringilla venenatis proin per nascetur aliquet vestibulum natoque nunc, aptent praesent cursus.".text.textStyle(context.captionStyle).make().p16()

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_image.dart';
-import 'package:flutter_application_1/widgets/themes.dart';
+// import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';class CatalogList extends StatelessWidget {
   const CatalogList({super.key});
 
@@ -46,10 +46,14 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      
       child: VxBox(
+       
         child: Padding(
           padding: const EdgeInsets.all(8.0),
+          
           child: Row(children: [
+            
             Hero(
               tag: Key(catalog.image.toString()),
               child: CatalogImage(image: catalog.image)),
@@ -59,7 +63,7 @@ class CatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.bold.xl.color(Mytheme.darkBluishColor).make(),
+                catalog.name.text.bold.xl.color(context.accentColor).make(),
                 catalog.desc.text.textStyle(context.captionStyle).make(),
                 // 10.heightBox,
                 ButtonBar(
@@ -69,7 +73,7 @@ class CatalogItem extends StatelessWidget {
                     ElevatedButton(
                       onPressed: (){},
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Mytheme.darkBluishColor),
+                        backgroundColor: MaterialStateProperty.all(context.theme.buttonColor),
                         shape: MaterialStateProperty.all(const StadiumBorder())
                       ), 
                       child: "Add to Cart".text.make()
@@ -80,7 +84,7 @@ class CatalogItem extends StatelessWidget {
             ))
           ],),
         )
-      ).white.rounded.square(150).make().py16(),//padding veritcal only i.e. py
+      ).color(context.cardColor).rounded.square(150).make(),//padding veritcal only i.e. py
     );//similar to container
   }
 }

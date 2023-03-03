@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       changeButton =  true;
     });
     await Future.delayed(const Duration(seconds: 1));
+    // ignore: use_build_context_synchronously
     await Navigator.pushNamed(context, MyRoutes.homeRoute);
     setState(() {
       changeButton =  false;
@@ -35,6 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     
     return Material(
+      color: context.canvasColor,
      child:SingleChildScrollView(
      child: Form
      (
@@ -111,7 +115,7 @@ class _LoginPageState extends State<LoginPage> {
             //make Container as child
             Material
             (
-              color: Colors.deepPurpleAccent,  
+              color: context.theme.buttonColor,  
               borderRadius: BorderRadius.circular(changeButton? 50: 8),
               child: InkWell( 
                 onTap: () =>moveToHome(context),
