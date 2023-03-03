@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -42,6 +44,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context){//context is element which decides location of each widget
     return Scaffold(
       backgroundColor: Mytheme.creamColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Mytheme.darkBluishColor,
+        onPressed: (){
+          Navigator.pushNamed(context, MyRoutes.cartroute);
+        },
+        child: const Icon(CupertinoIcons.cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,
