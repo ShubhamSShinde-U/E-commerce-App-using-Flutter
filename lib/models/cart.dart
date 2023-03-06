@@ -1,6 +1,14 @@
 import 'package:flutter_application_1/models/catalog.dart';
 
 class CartModel{
+
+  //as we creted new object for every click so to avoid this create only one object for all
+  //singleton class
+  static final cartModel = CartModel._internal();
+  CartModel._internal();
+  factory CartModel() => cartModel;
+
+
   //catalog field
   late CatalogModel _catalog;
 
@@ -12,18 +20,18 @@ class CartModel{
   CatalogModel get catalog => _catalog;
 
   //set new catalog to new catalog
-  set CatalogModel(CatalogModel newCatalogModel){
+  set catalog(CatalogModel newCatalogModel){
     assert(newCatalogModel!=null);//newcatalog can not be null
     _catalog = newCatalogModel;
   }
 
   //get items in cart
-  List get items => _itemIds.map((id) => _catalog.getById(id)).toList();
+  List<Item> get items => _itemIds.map((id) => _catalog.getById(id)).toList();
 
 
   //get total price
   // num get totalPrice => items.fold(initialValue, (previousValue, element) => null)
-     num get totalPrice => items.fold(0, (total, current) => total+current);
+     num get totalPrice => items.fold(0, (total, current) => total+current.price);
 
 
   //add item
