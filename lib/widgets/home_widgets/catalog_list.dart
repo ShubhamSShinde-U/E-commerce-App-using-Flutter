@@ -12,7 +12,8 @@ import 'package:velocity_x/velocity_x.dart';class CatalogList extends StatelessW
       shrinkWrap: true,
       itemCount: CatalogModel.items.length,
       itemBuilder:(context, index) {
-        final catalog = CatalogModel.items[index];
+        // final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.getByPos(index);
         return InkWell(
           onTap: (
             () => Navigator.push(

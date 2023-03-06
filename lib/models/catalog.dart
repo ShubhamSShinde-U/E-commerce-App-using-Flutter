@@ -101,7 +101,8 @@ class Item {
 
 
 class CatalogModel{
-  static List<Item> items =[  //as we want data in list format in home_page so make it of type List<Item>
+  static List<Item> items =[  
+    //as we want data in list format in home_page so make it of type List<Item>
   // Item(
   //  id:001,
   //    name:"14Pro Max",
@@ -111,4 +112,7 @@ class CatalogModel{
   //    image:"https://th.bing.com/th/id/OIP.xhnvEObwHYLOpJdwH5iIaAHaHa?pid=ImgDet&rs=1"
   //  ),
 ];
+
+ static Item getById(int id) => items.firstWhere((element) => element.id == id, orElse: null);
+ static Item getByPos(int pos) => items[pos];
 }
