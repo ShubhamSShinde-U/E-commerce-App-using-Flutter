@@ -14,7 +14,7 @@ class CartPAge extends StatelessWidget {
       backgroundColor: Mytheme.creamColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: "Cart".text.make(),
+        title: "Cart".text.black.make(),
       ),
       body: Column(
         children: [
@@ -39,7 +39,18 @@ class _CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          "\$${_cart.totalPrice}".text.xl5.color(context.theme.accentColor).make(),
+          VxConsumer(
+            notifications: {},
+            mutations: {RemoveMutation},
+            builder: (BuildContext context, store, VxStatus? status) { 
+              return "\$${_cart.totalPrice}"
+              .text
+              .xl5
+              .color(context.theme.accentColor)
+              .make();
+              },
+            )
+          ,
           30.widthBox,
           ElevatedButton(onPressed: (){
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Buying not yet supprted".text.make()));
@@ -57,6 +68,7 @@ class _CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
     final CartModel _cart = (VxState.store as MyStore).cart;
 
     return _cart.items.isEmpty?  "Nothing to Show!!!".text.xl3.makeCentered() : ListView.builder(
@@ -66,7 +78,8 @@ class _CartList extends StatelessWidget {
         trailing: IconButton(
           icon: const Icon(Icons.remove_circle_outline), 
           onPressed: (){
-            _cart.remove(_cart.items[index]);
+            // _cart.remove(_cart.items[index]);
+            RemoveMutation(_cart.items[index]);
             // setState(() {});
           },
           ),
