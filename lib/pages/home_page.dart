@@ -77,8 +77,6 @@ class _HomePageState extends State<HomePage> {
           )
           ),
       ),
-       
-      
       body: SafeArea(
         child: Container(
           padding: Vx.m16,
