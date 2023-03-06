@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/utils/routes.dart';
+import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +14,9 @@ import 'package:flutter_application_1/widgets/themes.dart';
 //dart convert: json encoder decoder
 import 'dart:convert';
 
+import '../widgets/drawer.dart';
+import '../widgets/drawer.dart';
+import '../widgets/drawer.dart';
 import '../widgets/home_widgets/caatalog_header.dart';
 class HomePage extends StatefulWidget {
   @override
@@ -73,6 +77,7 @@ class _HomePageState extends State<HomePage> {
           )
           ),
       ),
+       
       
       body: SafeArea(
         child: Container(
