@@ -2,11 +2,6 @@ import 'package:flutter_application_1/models/catalog.dart';
 
 class CartModel{
 
-  //as we creted new object for every click so to avoid this create only one object for all
-  //singleton class
-  static final cartModel = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModel;
 
 
   //catalog field
