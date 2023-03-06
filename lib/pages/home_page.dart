@@ -7,7 +7,7 @@ import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
 //dart convert: json encoder decoder
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   final int day = 20;
 
   final String name = "Shubham";
-
+  final url = "https://api.jsonbin.io/v3/b/6406165cace6f33a22ea5290";
   @override
   void initState() {//agar data haya pehle aa jaye to mai build method ko directly de sakta hu: so initState used
     super.initState();
@@ -32,13 +32,23 @@ class _HomePageState extends State<HomePage> {
 
   loadData() async{
     //to load data from JSON file we can use root bundle which is placed in service library
-    var catalogJson = await rootBundle.loadString("assests/files/catalog.json");//this will return future so we have to wait so add await at start 
+    // var catalogJson = await rootBundle.loadString("assests/files/catalog.json");//this will return future so we have to wait so add await at start 
 
-    var decodedData = jsonDecode(catalogJson);
-    var productData = decodedData["products"];
+    // var decodedData = jsonDecode(catalogJson);
+    // var productData = decodedData["products"];
+
+    await Future.delayed(Duration(seconds: 2));
+    // final catalogJson =
+    //     await rootBundle.loadString("assets/files/catalog.json");
+
+    final response = await http.get(Uri.parse(url));
+    final catalogJson = response.body;
+    final decodedData = jsonDecode(catalogJson);
+    var productData = decodedData["record"];
 
     CatalogModel.items = List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();//getting list of items
     // print(productData);//here  I will get mapped data
+
 
     setState(() {});//set state to fetch all data
   }
@@ -63,6 +73,7 @@ class _HomePageState extends State<HomePage> {
           )
           ),
       ),
+      
       body: SafeArea(
         child: Container(
           padding: Vx.m16,
