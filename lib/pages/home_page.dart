@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   final int day = 20;
 
   final String name = "Shubham";
-  final url ="https://api.jsonbin.io/v3/b/6405e540c0e7653a05834f86";
+  final url ="https://api.jsonbin.io/v3/b/6406165cace6f33a22ea5290";
 
   @override
   void initState() {//agar data haya pehle aa jaye to mai build method ko directly de sakta hu: so initState used
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     final response = await http.get(Uri.parse(url));
     final catalogJson = response.body;
     final decodedData = jsonDecode(catalogJson);
-    var productData = decodedData["products"];
+    var productData = decodedData["record"];
 
     CatalogModel.items = List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
     setState(() {});
